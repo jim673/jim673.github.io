@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东方索契酒店周边畅游攻略</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+        
+        /* 顶部装饰 */
+        .header-banner {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-banner::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: #f8f9fa;
+            border-radius: 100% 100% 0 0 / 100%;
+        }
+        
+        .header-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        .header-content h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 10;
+            position: relative;
+        }
+        
+        .header-content p {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.5;
+            z-index: 10;
+            position: relative;
+            white-space: normal;
+        }
+        
+        /* 内容容器 */
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: -60px auto 0;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        /* 导航标签 */
+        .nav-tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 20px;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .nav-tab {
+            text-align: center;
+            flex: 1;
+            color: #666;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0 5px;
+        }
+        
+        .nav-tab.active {
+            color: #1a73e8;
+            position: relative;
+        }
+        
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -21px;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background-color: #1a73e8;
+            border-radius: 3px;
+            z-index: 30;
+        }
+        
+        /* 章节样式 */
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            font-size: 22px;
+            color: #1a73e8;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8f0fe;
+        }
+        
+        .section h2 .icon {
+            width: 30px;
+            height: 30px;
+            background-color: #e8f0fe;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        
+        /* 子章节样式 */
+        .sub-section {
+            margin-bottom: 25px;
+        }
+        
+        .sub-section h3 {
+            font-size: 18px;
+            color: #1a73e8;
+            margin: 15px 0 12px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background-color: #f8f9ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .card h3 {
+            font-size: 18px;
+            color: #1a73e8;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h3 .distance {
+            font-size: 13px;
+            background-color: #e8f0fe;
+            color: #1a73e8;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+            font-weight: normal;
+        }
+        
+        /* 图片容器 */
+        .img-container {
+            width: 100%;
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .img-container:active img {
+            transform: scale(1.05);
+        }
+        
+        /* 列表样式 */
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #555;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        li strong {
+            color: #1a73e8;
+        }
+        
+        /* 提示框样式 */
+        .tips-box {
+            background-color: #fff8e1;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #ffb300;
+        }
+        
+        .tips-box h4 {
+            color: #e65100;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .tips-box p {
+            font-size: 14px;
+            color: #5d4037;
+        }
+        
+        /* 网格布局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .grid-item {
+            background-color: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .grid-item h4 {
+            font-size: 16px;
+            color: #1a73e8;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .grid-item p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+        
+        /* 行程建议样式 */
+        .itinerary {
+            background-color: #e8f5e9;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 15px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .itinerary h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+        
+        .itinerary p {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        /* 底部样式 */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: #e8f0fe;
+            border-radius: 15px;
+        }
+        
+        footer p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .header-banner {
+                height: 220px;
+            }
+            
+            .header-content h1 {
+                font-size: 24px;
+            }
+            
+            .container {
+                width: 95%;
+                padding: 25px 15px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .img-container {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部横幅 -->
+    <div class="header-banner">
+        <div class="header-content">
+            <h1>东方索契酒店周边畅游攻略</h1>
+            <p>交通贴士、海鲜寻味、周边览胜、酒店乐活</p>
+        </div>
+    </div>
+
+    <!-- 主内容 -->
+    <div class="container">
+        <!-- 导航标签 -->
+        <div class="nav-tabs">
+            <div class="nav-tab active">出行交通</div>
+            <div class="nav-tab">海鲜美食</div>
+            <div class="nav-tab">周边游玩</div>
+            <div class="nav-tab">酒店乐活</div>
+            <div class="nav-tab">行程建议</div>
+        </div>
+
+        <!-- 欢迎语 -->
+        <div class="section" id="welcome">
+            <p style="font-size: 16px; line-height: 1.7; margin-bottom: 25px;">
+                欢迎下榻东方索契酒店！这里不仅是度假天堂，更是探索海南西部风情的理想据点。我们为您精心打造了这份涵盖交通贴士、海鲜寻味、周边览胜、酒店乐活的全方位攻略，助您畅享旅程。
+            </p>
+        </div>
+
+        <!-- 出行首选 -->
+        <div class="section" id="transportation">
+            <h2><span class="icon">🚗</span>出行首选：灵活便捷的交通方式</h2>
+            
+            <div class="card">
+                <h3>🛵 共享电动车</h3>
+                <p>酒店门口即有！这是探索酒店附近4公里内景点的绝佳工具。前往沙滩吧、寻找附近美食，骑上小电车，吹着海风，方便又惬意。</p>
+                <div class="img-container">
+                    <img src="img/ddc.png" alt="共享电动车">
+                </div>
+                <div class="tips-box">
+                    <h4>使用提示</h4>
+                    <p>使用前请确认运营范围和电量，避免骑行超出服务区。</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>🚗 自驾/包车</h3>
+                <p>前往较远景点（如鱼鳞洲、火车博物馆、莺歌海盐场、尖峰岭）的首选方式，自由度最高。租车参考价：80-300元/天。</p>
+            </div>
+        </div>
+
+        <!-- 渔村海鲜盛宴 -->
+        <div class="section" id="seafood">
+            <h2><span class="icon">🦞</span>渔村海鲜盛宴：从码头到餐桌</h2>
+            
+            <div class="sub-section">
+                <h3>🦞 采购点推荐</h3>
+                <div class="card">
+                    <h3>🚢 利章渔场 <span class="distance">约4km</span></h3>
+                    <p>基础海鲜的可靠选择。每日清晨渔船带回满仓新鲜海产，可亲身感受渔村烟火气，挑选最新鲜的海货。</p>
+                    <div class="img-container">
+                        <img src="img/lzc.png" alt="利章渔场">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🏖️ 海滨村（岭头渔港）</h3>
+                    <p>深度游首选！深水渔港，海鲜种类最丰，价格可能更优，渔港风情浓厚。</p>
+                    <div class="img-container">
+                        <img src="img/ltg.png" alt="岭头渔港">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🐷 东方四更烤乳猪 (民发烤乳猪店)<span class="distance">约4km</span></h3>
+                    <p>东方市必吃名片，东方市烤乳猪第二名。采购海鲜前后，可专程来此品尝皮脆肉嫩的烤乳猪。</p>
+                    <div class="img-container">
+                        <img src="img/krz.png" alt="四更烤乳猪">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sub-section">
+                <h3>🍽️ 加工方案</h3>
+                <ul>
+                    <li><strong>优享体验：回酒店加工</strong>。环境、卫生、口味皆有保障，最省心。加工费：清蒸20元/份，椒盐30元/份。</li>
+                    <li><strong>本地体验：岭头港俞小妹海鲜加工</strong>。烟火气十足，风味地道，但需接受环境较为简陋。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 周边游玩全指南 -->
+        <div class="section" id="attractions">
+            <h2><span class="icon">🌊</span>周边游玩全指南：由近及远，畅玩西部</h2>
+            
+            <div class="sub-section">
+                <h3>🚲 【近程体验】共享电车/短途驾车可达 (≤4km)</h3>
+                
+                <div class="card">
+                    <h3>🏖️ 酒店沙滩吧 <span class="distance">350m</span></h3>
+                    <p>欣赏海南西海岸绝美日落的黄金点位，夜晚变身烧烤夜市，氛围感拉满。</p>
+                    <div class="img-container">
+                        <img src="img/stb.png" alt="沙滩日落">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>⛪ 海上礼堂与玻璃栈道 <span class="distance">约4km</span></h3>
+                    <p>定位"金月湾房车营地"。延伸入海2公里的浪漫打卡圣地，拍照出片率极高。</p>
+                    <div class="img-container">
+                        <img src="img/hslt.png" alt="海上礼堂">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sub-section">
+                <h3>🚗 【中程探访】建议驾车前往 (约4-15km)</h3>
+                
+                <div class="card">
+                    <h3>💨 感恩角海岸风车阵</h3>
+                    <p>壮观的白色的风车群沿海岸线排列，是拍摄大片的绝佳背景。</p>
+                    <div class="img-container">
+                        <img src="img/fcha.png" alt="感恩角海岸风车阵">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🌳 花梨谷文化旅游区</h3>
+                    <p>花梨谷，坐拥全球最大黄花梨林，博物馆藏文化密码。萌宠乐园、七彩花海趣致十足，天然氧吧里的家庭游优选地。</p>
+                    <div class="img-container">
+                        <img src="img/hlg.png"alt="花梨谷文化旅游区">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sub-section">
+                <h3>🚗 【远程探索】建议预留半天至一天 (约20-35km)</h3>
+                
+                <div class="card">
+                    <h3>💡 鱼鳞洲风景区 <span class="distance">约35km</span></h3>
+                    <p>东方市的标志性景点，拥有灯塔、风车、礁石和海滩，是观赏日落、听涛观海的经典之地。</p>
+                    <div class="img-container">
+                        <img src="img/ylz.png" alt="鱼鳞洲风景区">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🚂 海南铁路博物馆 <span class="distance">约35km</span></h3>
+                    <p>位于八所镇，陈列着近代铁路遗迹，包括旧式蒸汽机车和公务车，是火车迷和人文历史爱好者的好去处。</p>
+                    <div class="img-container">
+                        <img src="img/tlbwg.png" alt="海南火车博物馆">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🏜️ 莺歌海盐场 <span class="distance">约1小时车程</span></h3>
+                    <p>"天空之镜"般的奇观，世界第二大盐场，景色震撼。可顺路至黄流镇品尝名菜"黄流老鸭"。</p>
+                    <div class="img-container">
+                        <img src="img/yc.png" alt="莺歌海盐场天空之镜">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🏔️ 尖峰岭国家森林公园 <span class="distance">约20km</span></h3>
+                    <p>海南著名的热带雨林自然保护区，拥有中国面积最大、保存最完好的原始热带雨林之一。这里以壮观的云海日出和神秘的天池景观著称，登顶可俯瞰群山云海，运气好还能看到云海日出的绝美奇观；天池则是深藏在原始森林中的高山湖泊，湖水清澈碧绿，周围环绕着茂密的热带雨林，宛如仙境。</p>
+                    <div class="img-container">
+                        <img src="img/yhrc.png"alt="尖峰岭云海">
+                    </div>
+                    <div class="tips-box">
+                        <h4>游玩贴士</h4>
+                        <p>看云海日出需凌晨4点左右出发，带好外套和手电筒；天池区域蚊虫较多，建议穿长袖衣裤并携带防蚊虫药物；景区面积较大，建议自驾或乘坐景区观光车；山上气温较低，注意保暖。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 酒店乐活指南 -->
+        <div class="section" id="hotel-activities">
+            <h2><span class="icon">🏨</span>酒店乐活指南：足不出户，乐趣不减</h2>
+            <p style="margin-bottom: 15px;">酒店本身就是一个丰富的度假世界。</p>
+            
+            <div class="sub-section">
+                <h3>🏊 成人休闲</h3>
+                <ul>
+                    <li><strong>户外泳池</strong> (2300㎡)：超大泳池，水上滑梯等设施</li>
+                    <li><strong>海景健身房</strong> (3F)：专业器械，专业教练指导</li>
+                    <li><strong>金月吧</strong>：精致下午茶、甜点饮品；晚上可K歌</li>
+                    <li><strong>棋牌室</strong> (2F)：多种棋牌，交流技艺的好地方</li>
+                    <li><strong>乒乓球/台球</strong> (1F)：休闲互动好去处</li>
+                </ul>
+            </div>
+            
+            <div class="sub-section">
+                <h3>🎪 亲子天地</h3>
+                <div class="card">
+                    <h3>陆上乐园</h3>
+                    <ul>
+                        <li>萌宠喂养：小兔子、小羊等，培养孩子爱心</li>
+                        <li>卡丁车、小火车：安全场地内感受速度与乐趣</li>
+                        <li>摇摇车、儿童蹦床、小型儿童城堡等多样设施</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>水上派对</h3>
+                    <ul>
+                        <li>水上滑梯：刺激有趣的水上设施</li>
+                        <li>电动浮排：轻松享受水上乐趣</li>
+                        <li>泡泡趴（每周六下午5点半）：童趣与欢乐的活动</li>
+                    </ul>
+                    <div class="img-container">
+                        <img src="img/scpp.png" alt="儿童游乐设施">
+                    </div>
+                    <div class="tips-box">
+                        <h4>活动提示</h4>
+                        <p>儿童活动等细节，出行前最好与酒店确认。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行程参考 -->
+        <div class="section" id="itinerary">
+            <h2><span class="icon">🗓️</span>行程参考</h2>
+            
+            
+            
+            <div class="sub-section">
+                
+                
+                <div class="itinerary">
+                    <h4>Day 1：轻松休闲</h4>
+                    <p>酒店入住 → 骑共享电车逛沙滩吧看日落 → 酒店晚餐或沙滩烧烤</p>
+                </div>
+                
+                <div class="itinerary">
+                    <h4>Day 2：海鲜与近景</h4>
+                    <p>骑电车/驾车前往岭头渔港采购海鲜 → 品尝四更烤乳猪 → 回酒店加工享用 → 下午驾车前往海上玻璃栈道拍照 → 感恩角看风车</p>
+                </div>
+                
+                <div class="itinerary">
+                    <h4>Day 3：自然探索</h4>
+                    <p>驾车前往尖峰岭国家森林公园（距离酒店仅20km，车程约30分钟）→ 清晨登山看云海日出 → 游览天池景区 → 下午返回酒店休息</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 温馨提示 -->
+        <div class="section" id="tips">
+            <h2><span class="icon">💡</span>最终温馨提示</h2>
+            
+            <div class="tips-box">
+                <ul>
+                    <li>使用共享电动车前，请确认运营范围和电量</li>
+                    <li>海鲜加工费、儿童活动等细节，出行前最好与酒店确认</li>
+                    <li>海南西部日照强烈，户外活动务必做好防晒</li>
+                    <li>雨季（5-10月）携带便携雨具</li>
+                    <li>海边游玩注意安全，遵守警示标识</li>
+                    <li>尊重当地风俗习惯，爱护环境</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer>
+            <p>希望这份详尽的攻略能助您在东方索契酒店度过一个完美假期！</p>
+            <p style="margin-top: 8px;">祝您旅途愉快！</p>
+            <p style="margin-top: 15px; font-size: 12px; color: #999;">更新时间：2025年10月</p>
+        </footer>
+    </div>
+
+    <script>
+        // 简单的交互效果
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有活动状态
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                // 添加当前活动状态
+                this.classList.add('active');
+                
+                // 滚动到对应的内容区域
+                const tabIndex = Array.from(document.querySelectorAll('.nav-tab')).indexOf(this);
+                const sections = document.querySelectorAll('.section[id]');
+                if (sections[tabIndex]) {
+                    sections[tabIndex].scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // 返回顶部按钮功能
+        const backToTop = document.createElement('button');
+        backToTop.textContent = '↑';
+        backToTop.style.position = 'fixed';
+        backToTop.style.bottom = '20px';
+        backToTop.style.right = '20px';
+        backToTop.style.width = '40px';
+        backToTop.style.height = '40px';
+        backToTop.style.borderRadius = '50%';
+        backToTop.style.backgroundColor = '#1a73e8';
+        backToTop.style.color = 'white';
+        backToTop.style.border = 'none';
+        backToTop.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+        backToTop.style.fontSize = '20px';
+        backToTop.style.cursor = 'pointer';
+        backToTop.style.display = 'none';
+        backToTop.style.zIndex = '999';
+        document.body.appendChild(backToTop);
+        
+        // 滚动显示/隐藏返回顶部按钮
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        // 返回顶部功能
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // 图片点击放大效果
+        document.querySelectorAll('.img-container').forEach(container => {
+            container.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                // 创建全屏图片容器
+                const fullscreenContainer = document.createElement('div');
+                fullscreenContainer.style.position = 'fixed';
+                fullscreenContainer.style.top = '0';
+                fullscreenContainer.style.left = '0';
+                fullscreenContainer.style.width = '100%';
+                fullscreenContainer.style.height = '100%';
+                fullscreenContainer.style.backgroundColor = 'rgba(0,0,0,0.9)';
+                fullscreenContainer.style.display = 'flex';
+                fullscreenContainer.style.alignItems = 'center';
+                fullscreenContainer.style.justifyContent = 'center';
+                fullscreenContainer.style.zIndex = '1000';
+                fullscreenContainer.style.cursor = 'pointer';
+                
+                // 创建放大的图片
+                const fullscreenImg = document.createElement('img');
+                fullscreenImg.src = img.src;
+                fullscreenImg.style.maxWidth = '90%';
+                fullscreenImg.style.maxHeight = '90%';
+                fullscreenImg.style.objectFit = 'contain';
+                fullscreenImg.style.transition = 'transform 0.3s';
+                
+                // 添加到页面
+                fullscreenContainer.appendChild(fullscreenImg);
+                document.body.appendChild(fullscreenContainer);
+                
+                // 点击关闭全屏
+                fullscreenContainer.addEventListener('click', function() {
+                    document.body.removeChild(fullscreenContainer);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
