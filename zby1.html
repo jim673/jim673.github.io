@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东方索契酒店周边畅游攻略</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            background-color: #f0f2f5; /* 浅灰色背景，更接近苹果风格 */
+            color: #1c1c1e; /* 深色字体，突出质感 */
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+        
+        /* 顶部装饰 */
+        .header-banner {
+            width: 100%;
+            height: 280px; /* 增加高度 */
+            background: linear-gradient(135deg, #a8c0ff 0%, #392b8c 100%); /* 渐变色调整，更柔和 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-banner::before { /* 移除底部波浪效果，采用简洁的直线 */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px; /* 调整高度 */
+            background-color: #f0f2f5; /* 与body背景色一致 */
+            /* border-radius: 100% 100% 0 0 / 100%; */
+        }
+        
+        .header-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        .header-content h1 {
+            font-size: 36px; /* 增大标题字号 */
+            font-weight: 700; /* 加粗 */
+            margin-bottom: 12px; /* 调整留白 */
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3); /* 更深阴影 */
+            z-index: 10;
+            position: relative;
+        }
+        
+        .header-content p {
+            font-size: 18px; /* 增大副标题字号 */
+            opacity: 0.95; /* 提高不透明度 */
+            line-height: 1.5;
+            z-index: 10;
+            position: relative;
+            white-space: normal;
+        }
+        
+        /* 内容容器 */
+        .container {
+            width: 90%;
+            max-width: 900px; /* 增加最大宽度 */
+            margin: -60px auto 0;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 保持原有阴影，或根据需要调整 */
+            padding: 35px 40px; /* 增加内边距 */
+            position: relative;
+        }
+        
+        /* 导航标签 */
+        .nav-tabs {
+            display: flex;
+            justify-content: space-around; /* 均匀分布 */
+            margin-bottom: 30px; /* 增加留白 */
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e5e5; /* 调整边框颜色 */
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 20px;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .nav-tab {
+            text-align: center;
+            flex: 1;
+            color: #888; /* 默认颜色更柔和 */
+            font-size: 16px; /* 增大字号 */
+            font-weight: 500;
+            transition: color 0.3s, transform 0.2s; /* 添加hover动画 */
+            padding: 0 8px;
+            cursor: pointer; /* 提示可点击 */
+        }
+        .nav-tab:hover {
+            color: #333;
+            transform: translateY(-2px);
+        }
+        
+        .nav-tab.active {
+            color: #007aff; /* 苹果蓝色 */
+            position: relative;
+            font-weight: 600; /* 激活状态加粗 */
+        }
+        
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -18px; /* 调整位置 */
+            left: 50%;
+            transform: translateX(-50%); /* 居中显示 */
+            width: 30px; /* 缩短长度 */
+            height: 3px;
+            background-color: #007aff; /* 苹果蓝色 */
+            border-radius: 3px;
+            z-index: 30;
+        }
+        
+        /* 章节样式 */
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            font-size: 22px;
+            color: #1c1c1e; /* 统一标题颜色 */
+            margin-bottom: 18px; /* 增加标题留白 */
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8f0fe;
+            font-weight: 700; /* 更粗的字重 */
+        }
+        
+        .section h2 .icon {
+            width: 30px;
+            height: 30px;
+            background-color: #e8f0fe;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        
+        /* 子章节样式 */
+        .sub-section {
+            background-color: #f8f8f8; /* 浅色背景 */
+            border-left: none; /* 移除左侧边框 */
+            padding: 25px; /* 增加内边距 */
+            margin-top: 25px; /* 增加间距 */
+            margin-bottom: 25px; /* 增加间距 */
+            border-radius: 12px; /* 统一圆角 */
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* 内部阴影，增加层次感 */
+        }
+        
+        .sub-section h3 {
+            font-size: 18px;
+            color: #1a73e8;
+            margin: 15px 0 12px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* 更柔和的阴影 */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 1px solid #e0e0e0; /* 增加细边框 */
+        }
+        
+        .card:hover {
+            transform: translateY(-3px) scale(1.01); /* 略微放大效果 */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12); /* 悬停阴影 */
+        }
+        
+        .card h3 {
+            font-size: 19px; /* 增大标题字号 */
+            color: #1c1c1e; /* 统一标题颜色 */
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-weight: 600; /* 加粗 */
+        }
+        
+        .card h3 .distance {
+            font-size: 14px; /* 增大字号 */
+            background-color: #e5f0ff; /* 更浅的背景色 */
+            color: #007aff; /* 苹果蓝色 */
+            padding: 4px 12px; /* 调整内边距 */
+            border-radius: 20px;
+            margin-left: 10px;
+            font-weight: 500; /* 适中字重 */
+        }
+        
+        /* 图片容器 */
+        .img-container {
+            width: 100%;
+            height: 220px; /* 略微增加高度 */
+            overflow: hidden;
+            border-radius: 12px; /* 保持圆角 */
+            margin: 20px 0; /* 增加上下边距，提供更多留白 */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* 更柔和且明显的阴影 */
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .img-container:hover {
+            transform: translateY(-5px); /* 悬停上浮效果 */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .img-container:hover img {
+            transform: scale(1.08); /* 悬停放大效果更明显 */
+        }
+        
+        /* 列表样式 */
+        ul {
+            list-style: none; /* 移除默认列表点 */
+            padding: 0;
+            margin-left: 0;
+            margin-bottom: 25px; /* 增加底部留白 */
+        }
+        
+        li {
+            margin-bottom: 15px; /* 增加列表项间距 */
+            font-size: 17px; /* 增大字号 */
+            color: #4a4a4a; /* 更深字体颜色，柔和 */
+            position: relative;
+            line-height: 1.8; /* 增加行高 */
+            padding-left: 28px; /* 为自定义项目符号留出空间 */
+        }
+        
+        li::before { /* 自定义项目符号 */
+            content: '•';
+            color: #007aff; /* 苹果蓝色 */
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+        
+        li strong {
+            color: #007aff; /* 苹果蓝色 */
+            font-weight: 600;
+        }
+        
+        /* 提示框样式 */
+        .tips-box {
+            background-color: #fff8e1;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #ffb300;
+        }
+        
+        .tips-box {
+            background-color: #f0f2f5; /* 更浅的背景色，更接近苹果风格 */
+            border-radius: 12px;
+            padding: 20px 25px; /* 调整内边距 */
+            margin: 30px 0; /* 增加上下边距 */
+            border-left: none; /* 确保无左侧边框 */
+            box-shadow: 0 4px 18px rgba(0,0,0,0.06); /* 更柔和的阴影 */
+        }
+        
+        .tips-box h4 {
+            color: #1a1a1a; /* 更深颜色 */
+            margin-bottom: 15px; /* 增加间距 */
+            font-size: 19px; /* 增大字号 */
+            font-weight: 700;
+        }
+        
+        .tips-box p {
+            font-size: 16px; /* 增大字号 */
+            color: #4a4a4a; /* 调整字体颜色 */
+            line-height: 1.8;
+        }
+        
+        /* 网格布局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 更灵活的响应式网格，最小宽度略增 */
+            gap: 30px; /* 增加网格间距 */
+            margin-bottom: 35px; /* 增加底部留白 */
+        }
+        
+        .grid .card {
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 更平滑的过渡效果 */
+        }
+        
+        .grid .card:hover {
+            transform: translateY(-8px); /* 悬停上浮效果更明显 */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12); /* 更明显的阴影 */
+        
+
+        
+        /* 行程建议样式 */
+        .itinerary {
+            background-color: #e8f5e9; /* 更柔和的绿色背景 */
+            border-radius: 12px;
+            padding: 25px; /* 增加内边距 */
+            margin: 30px 0; /* 增加上下边距 */
+            border-left: 6px solid #81c784; /* 更突出且柔和的左侧边框 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); /* 更明显阴影 */
+        }
+        
+        .itinerary h4 {
+            color: #2e7d32; /* 更深绿色 */
+            margin-bottom: 15px; /* 增加间距 */
+            font-size: 19px; /* 增大字号 */
+            font-weight: 700;
+        }
+        
+        .itinerary p {
+            font-size: 16px; /* 增大字号 */
+            color: #333; /* 调整字体颜色 */
+            line-height: 1.8;
+        }
+        
+        /* 底部样式 */
+        footer {
+            text-align: center;
+            padding: 40px 20px; /* 增加内边距 */
+            margin-top: 60px; /* 增加顶部边距 */
+            background-color: #f5f5f7; /* 更浅的背景色 */
+            border-top: 1px solid #e0e0e0; /* 顶部细边框 */
+            color: #777; /* 调整字体颜色 */
+            font-size: 15px; /* 增大字体大小 */
+            border-radius: 0;
+        }
+        
+        footer p {
+            color: #666; /* 调整字体颜色 */
+            font-size: 15px;
+            margin-top: 12px; /* 增加段落间距 */
+            line-height: 1.7;
+        }
+        
+        /* 响应式调整 */
+                @media (max-width: 768px) { /* 调整响应式断点 */
+            .header-banner {
+                height: 220px; /* 增大高度 */
+            }
+            
+            .header-content h1 {
+                font-size: 26px; /* 增大字号 */
+            }
+            
+            .header-content p {
+                font-size: 15px; /* 增大字号 */
+            }
+            
+            .container {
+                width: 92%; /* 略微加宽 */
+                padding: 30px 20px; /* 调整内边距 */
+                margin: -40px auto 0; 
+            }
+            
+            .nav-tabs {
+                margin-bottom: 25px; /* 增加底部间距 */
+            }
+
+            .nav-tab {
+                font-size: 15px; /* 增大字号 */
+                padding: 10px 15px; /* 调整内边距 */
+            }
+            
+            .section {
+                margin-bottom: 40px; /* 增加章节间距 */
+            }
+
+            .section h2 {
+                font-size: 22px; /* 增大字号 */
+                margin-bottom: 20px; /* 增加间距 */
+            }
+
+            .section p {
+                font-size: 16px; /* 增大字号 */
+                line-height: 1.7; /* 调整行高 */
+            }
+
+            .sub-section h3 {
+                font-size: 18px; /* 增大字号 */
+                margin-bottom: 15px; /* 增加间距 */
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px; /* 调整间距 */
+            }
+            
+            .card {
+                margin-bottom: 20px; /* 增加卡片间距 */
+            }
+
+            .card h3 {
+                font-size: 18px; /* 增大字号 */
+            }
+
+            .card p {
+                font-size: 15px; /* 增大字号 */
+            }
+
+            .img-container {
+                height: 200px; /* 略微增大高度 */
+                margin: 15px 0; /* 调整边距 */
+            }
+            
+            ul li {
+                font-size: 16px; /* 增大字号 */
+                margin-bottom: 12px; /* 调整间距 */
+            }
+
+            .tips-box {
+                padding: 18px 20px; /* 调整内边距 */
+                margin: 25px 0; /* 调整边距 */
+            }
+
+            .tips-box h4 {
+                font-size: 18px; /* 增大字号 */
+            }
+
+            .tips-box p {
+                font-size: 15px; /* 增大字号 */
+            }
+
+            .itinerary {
+                padding: 20px; /* 调整内边距 */
+                margin: 25px 0; /* 调整边距 */
+            }
+
+            .itinerary h4 {
+                font-size: 18px; /* 增大字号 */
+            }
+
+            .itinerary p {
+                font-size: 15px; /* 增大字号 */
+            }
+
+            footer {
+                padding: 30px 15px; /* 调整内边距 */
+                margin-top: 50px; /* 调整顶部边距 */
+                font-size: 14px; /* 调整字号 */
+            }
+
+            footer p {
+                font-size: 14px; /* 调整字号 */
+            }
+        }
+    
+
+        
+        /* 音乐控制按钮 */
+        .music-control {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1);
+            background-color: #1557b0;
+        }
+        
+        .music-control.paused::before {
+            content: '▶';
+        }
+        
+        .music-control.playing::before {
+            content: '⏸';
+        }
+        
+        /* 音频播放器隐藏 */
+        #bg-music {
+            display: none;
+        }
+        
+        .img-overlay {
+            box-shadow: 0 0 50px rgba(0,0,0,0.9); /* 更明显的阴影 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* 更深的背景色 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        
+        .img-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .img-overlay img {
+            max-width: 90%; /* 略微增大图片显示尺寸 */
+            max-height: 90%; /* 略微增大图片显示尺寸 */
+            object-fit: contain;
+            border-radius: 12px; /* 保持圆角 */
+            box-shadow: 0 0 30px rgba(0,0,0,0.6); /* 更明显的阴影 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部横幅 -->
+    <div class="header-banner">
+        <div class="header-content">
+            <h1>东方索契酒店周边畅游攻略</h1>
+            <p>交通贴士、海鲜寻味、周边览胜、酒店乐活</p>
+        </div>
+    </div>
+
+    <!-- 主内容 -->
+    <div class="container">
+        <!-- 导航标签 -->
+        <div class="nav-tabs">
+            <div class="nav-tab active">出行交通</div>
+            <div class="nav-tab">海鲜美食</div>
+            <div class="nav-tab">周边游玩</div>
+            <div class="nav-tab">酒店乐活</div>
+            <div class="nav-tab">行程建议</div>
+        </div>
+
+        <!-- 欢迎语 -->
+        <div class="section" id="welcome">
+            <p style="font-size: 16px; line-height: 1.7; margin-bottom: 25px;">
+                欢迎下榻东方索契酒店！这里不仅是度假天堂，更是探索海南西部风情的理想据点。我们为您精心打造了这份涵盖交通贴士、海鲜寻味、周边览胜、酒店乐活的全方位攻略，助您畅享旅程。
+            </p>
+        </div>
+
+        <!-- 出行首选 -->
+        <div class="section" id="transportation">
+            <h2><span class="icon">🚗</span>出行首选：灵活便捷的交通方式</h2>
+            
+            <div class="card">
+                <h3>🛵 共享电动车</h3>
+                <p>酒店门口即有！这是探索酒店附近4公里内景点的绝佳工具。前往沙滩吧、寻找附近美食，骑上小电车，吹着海风，方便又惬意。</p>
+                <div class="img-container">
+                    <img src="img/ddc.png" alt="共享电动车">
+                </div>
+                <div class="tips-box">
+                    <h4>使用提示</h4>
+                    <p>使用前请确认运营范围和电量，避免骑行超出服务区。</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>🚗 自驾/包车</h3>
+                <p>前往较远景点（如鱼鳞洲、火车博物馆、莺歌海盐场、尖峰岭）的首选方式，自由度最高。租车参考价：80-300元/天。</p>
+            </div>
+        </div>
+
+        <!-- 渔村海鲜盛宴 -->
+        <div class="section" id="seafood">
+            <h2><span class="icon">🦞</span>渔村海鲜盛宴：从码头到餐桌</h2>
+            
+            <div class="sub-section">
+                <h3>🦞 采购点推荐</h3>
+                <div class="card">
+                    <h3>🚢 利章渔场 <span class="distance">约4km</span></h3>
+                    <p>基础海鲜的可靠选择。每日清晨渔船带回满仓新鲜海产，可亲身感受渔村烟火气，挑选最新鲜的海货。</p>
+                    <div class="img-container">
+                        <img src="img/lzc.png" alt="利章渔场">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🏖️ 海滨村（岭头渔港）</h3>
+                    <p>深度游首选！深水渔港，海鲜种类最丰，价格可能更优，渔港风情浓厚。</p>
+                    <div class="img-container">
+                        <img src="img/ltg.png" alt="岭头渔港">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🐷 东方四更烤乳猪 (民发烤乳猪店)<span class="distance">约4km</span></h3>
+                    <p>东方市必吃名片，东方市烤乳猪第二名。采购海鲜前后，可专程来此品尝皮脆肉嫩的烤乳猪。</p>
+                    <div class="img-container">
+                        <img src="img/krz.png" alt="四更烤乳猪">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sub-section">
+                <h3>🍽️ 加工方案</h3>
+                <ul>
+                    <li><strong>优享体验：回酒店加工</strong>。环境、卫生、口味皆有保障，最省心。加工费：清蒸20元/份，椒盐30元/份。</li>
+                    <li><strong>本地体验：岭头港俞小妹海鲜加工</strong>。烟火气十足，风味地道，但需接受环境较为简陋。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 周边游玩全指南 -->
+        <div class="section" id="attractions">
+            <h2><span class="icon">🌊</span>周边游玩全指南：由近及远，畅玩西部</h2>
+            
+            <div class="sub-section">
+                <h3>🚲 【近程体验】共享电车/短途驾车可达 (≤4km)</h3>
+                
+                <div class="card">
+                    <h3>🏖️ 酒店沙滩吧 <span class="distance">350m</span></h3>
+                    <p>欣赏海南西海岸绝美日落的黄金点位，夜晚变身烧烤夜市，氛围感拉满。</p>
+                    <div class="img-container">
+                        <img src="img/stb.png" alt="沙滩日落">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>⛪ 海上礼堂与玻璃栈道 <span class="distance">约4km</span></h3>
+                    <p>定位"金月湾房车营地"。延伸入海2公里的浪漫打卡圣地，拍照出片率极高。</p>
+                    <div class="img-container">
+                        <img src="img/hslt.png" alt="海上礼堂">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sub-section">
+                <h3>🚗 【中程探访】建议驾车前往 (约4-15km)</h3>
+                
+                <div class="card">
+                    <h3>💨 感恩角海岸风车阵</h3>
+                    <p>壮观的白色的风车群沿海岸线排列，是拍摄大片的绝佳背景。</p>
+                    <div class="img-container">
+                        <img src="img/fcha.png" alt="感恩角海岸风车阵">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🌳 花梨谷文化旅游区</h3>
+                    <p>花梨谷，坐拥全球最大黄花梨林，博物馆藏文化密码。萌宠乐园、七彩花海趣致十足，天然氧吧里的家庭游优选地。</p>
+                    <div class="img-container">
+                        <img src="img/hlg.png"alt="花梨谷文化旅游区">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sub-section">
+                <h3>🚗 【远程探索】建议预留半天至一天 (约20-35km)</h3>
+                
+                <div class="card">
+                    <h3>💡 鱼鳞洲风景区 <span class="distance">约35km</span></h3>
+                    <p>东方市的标志性景点，拥有灯塔、风车、礁石和海滩，是观赏日落、听涛观海的经典之地。</p>
+                    <div class="img-container">
+                        <img src="img/ylz.png" alt="鱼鳞洲风景区">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🚂 海南铁路博物馆 <span class="distance">约35km</span></h3>
+                    <p>位于八所镇，陈列着近代铁路遗迹，包括旧式蒸汽机车和公务车，是火车迷和人文历史爱好者的好去处。</p>
+                    <div class="img-container">
+                        <img src="img/tlbwg.png" alt="海南火车博物馆">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🏜️ 莺歌海盐场 <span class="distance">约1小时车程</span></h3>
+                    <p>"天空之镜"般的奇观，世界第二大盐场，景色震撼。可顺路至黄流镇品尝名菜"黄流老鸭"。</p>
+                    <div class="img-container">
+                        <img src="img/yc.png" alt="莺歌海盐场天空之镜">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🏔️ 尖峰岭国家森林公园 <span class="distance">约20km</span></h3>
+                    <p>海南著名的热带雨林自然保护区，拥有中国面积最大、保存最完好的原始热带雨林之一。这里以壮观的云海日出和神秘的天池景观著称，登顶可俯瞰群山云海，运气好还能看到云海日出的绝美奇观；天池则是深藏在原始森林中的高山湖泊，湖水清澈碧绿，周围环绕着茂密的热带雨林，宛如仙境。</p>
+                    <div class="img-container">
+                        <img src="img/yhrc.png"alt="尖峰岭云海">
+                    </div>
+                    <div class="tips-box">
+                        <h4>游玩贴士</h4>
+                        <p>看云海日出需凌晨4点左右出发，带好外套和手电筒；天池区域蚊虫较多，建议穿长袖衣裤并携带防蚊虫药物；景区面积较大，建议自驾或乘坐景区观光车；山上气温较低，注意保暖。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 酒店乐活指南 -->
+        <div class="section" id="hotel-activities">
+            <h2><span class="icon">🏨</span>酒店乐活指南：足不出户，乐趣不减</h2>
+            <p style="margin-bottom: 15px;">酒店本身就是一个丰富的度假世界。</p>
+            
+            <div class="sub-section">
+                <h3>🏊 成人休闲</h3>
+                <ul>
+                    <li><strong>户外泳池</strong> (2300㎡)：超大泳池，水上滑梯等设施</li>
+                    <li><strong>海景健身房</strong> (3F)：专业器械，专业教练指导</li>
+                    <li><strong>金月吧</strong>：精致下午茶、甜点饮品；晚上可K歌</li>
+                    <li><strong>棋牌室</strong> (2F)：多种棋牌，交流技艺的好地方</li>
+                    <li><strong>乒乓球/台球</strong> (1F)：休闲互动好去处</li>
+                </ul>
+            </div>
+            
+            <div class="sub-section">
+                <h3>🎪 亲子天地</h3>
+                <div class="card">
+                    <h3>陆上乐园</h3>
+                    <ul>
+                        <li>萌宠喂养：小兔子、小羊等，培养孩子爱心</li>
+                        <li>卡丁车、小火车：安全场地内感受速度与乐趣</li>
+                        <li>摇摇车、儿童蹦床、小型儿童城堡等多样设施</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>水上派对</h3>
+                    <ul>
+                        <li>水上滑梯：刺激有趣的水上设施</li>
+                        <li>电动浮排：轻松享受水上乐趣</li>
+                        <li>泡泡趴（每周六下午5点半）：童趣与欢乐的活动</li>
+                    </ul>
+                    <div class="img-container">
+                        <img src="img/scpp.png" alt="儿童游乐设施">
+                    </div>
+                    <div class="tips-box">
+                        <h4>活动提示</h4>
+                        <p>儿童活动等细节，出行前最好与酒店确认。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行程参考 -->
+        <div class="section" id="itinerary">
+            <h2><span class="icon">🗓️</span>行程参考</h2>
+            
+            
+            
+            <div class="sub-section">
+                
+                
+                <div class="itinerary">
+                    <h4>Day 1：轻松休闲</h4>
+                    <p>酒店入住 → 骑共享电车逛沙滩吧看日落 → 酒店晚餐或沙滩烧烤</p>
+                </div>
+                
+                <div class="itinerary">
+                    <h4>Day 2：海鲜与近景</h4>
+                    <p>骑电车/驾车前往岭头渔港采购海鲜 → 品尝四更烤乳猪 → 回酒店加工享用 → 下午驾车前往海上玻璃栈道拍照 → 感恩角看风车</p>
+                </div>
+                
+                <div class="itinerary">
+                    <h4>Day 3：自然探索</h4>
+                    <p>驾车前往尖峰岭国家森林公园（距离酒店仅20km，车程约30分钟）→ 清晨登山看云海日出 → 游览天池景区 → 下午返回酒店休息</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 温馨提示 -->
+        <div class="section" id="tips">
+            <h2><span class="icon">💡</span>最终温馨提示</h2>
+            
+            <div class="tips-box">
+                <ul>
+                    <li>使用共享电动车前，请确认运营范围和电量</li>
+                    <li>海鲜加工费、儿童活动等细节，出行前最好与酒店确认</li>
+                    <li>海南西部日照强烈，户外活动务必做好防晒</li>
+                    <li>雨季（5-10月）携带便携雨具</li>
+                    <li>海边游玩注意安全，遵守警示标识</li>
+                    <li>尊重当地风俗习惯，爱护环境</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer>
+            <p>希望这份详尽的攻略能助您在东方索契酒店度过一个完美假期！</p>
+            <p style="margin-top: 8px;">祝您旅途愉快！</p>
+            <p style="margin-top: 15px; font-size: 12px; color: #999;">更新时间：2025年10月</p>
+        </footer>
+    </div>
+
+    <script>
+        // 简单的交互效果
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有活动状态
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                // 添加当前活动状态
+                this.classList.add('active');
+                
+                // 滚动到对应的内容区域
+                const targetId = this.textContent.trim();
+                let sectionId = '';
+
+                switch(targetId) {
+                    case '出行交通': sectionId = 'transportation'; break;
+                    case '海鲜美食': sectionId = 'seafood'; break;
+                    case '周边游玩': sectionId = 'attractions'; break;
+                    case '酒店乐活': sectionId = 'hotel-activities'; break;
+                    case '行程建议': sectionId = 'itinerary'; break;
+                    default: return; // 如果没有匹配的ID，则不执行任何操作
+                }
+
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                // 额外处理，确保在移动端也能准确跳转
+                // 如果导航项与目标section的顶部距离太近，可能需要额外的偏移量
+                const headerOffset = document.querySelector('.header-banner').offsetHeight + document.querySelector('.nav-tabs').offsetHeight;
+                const elementPosition = targetSection.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({ behavior: 'smooth', top: offsetPosition });
+
+            });
+        });
+        
+        // 返回顶部按钮功能
+        const backToTop = document.createElement('button');
+        backToTop.textContent = '↑';
+        backToTop.style.position = 'fixed';
+        backToTop.style.bottom = '20px';
+        backToTop.style.right = '20px';
+        backToTop.style.width = '40px';
+        backToTop.style.height = '40px';
+        backToTop.style.borderRadius = '50%';
+        backToTop.style.backgroundColor = '#1a73e8';
+        backToTop.style.color = 'white';
+        backToTop.style.border = 'none';
+        backToTop.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+        backToTop.style.fontSize = '20px';
+        backToTop.style.cursor = 'pointer';
+        backToTop.style.display = 'none';
+        backToTop.style.zIndex = '999';
+        document.body.appendChild(backToTop);
+        
+        // 滚动显示/隐藏返回顶部按钮
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        // 返回顶部功能
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // 背景音乐功能 - 日落黄昏-松岛妮可
+        // 创建音频元素
+        const audio = document.createElement('audio');
+        audio.id = 'bg-music';
+        audio.loop = true;
+        audio.volume = 0.25; // 设置初始音量为25%
+        
+        // 使用B站视频中的音乐
+        audio.src = 'https://music.163.com/song/media/outer/url?id=1442590163.mp3'; // 日落黄昏-松岛妮可
+        document.body.appendChild(audio);
+        
+        // 创建音乐控制按钮
+        const musicControl = document.createElement('button');
+        musicControl.className = 'music-control paused';
+        musicControl.setAttribute('aria-label', '控制背景音乐');
+        document.body.appendChild(musicControl);
+        
+        // 音乐控制逻辑
+        musicControl.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    musicControl.classList.remove('paused');
+                    musicControl.classList.add('playing');
+                }).catch(error => {
+                    console.log('播放音乐失败:', error);
+                });
+            } else {
+                audio.pause();
+                musicControl.classList.remove('playing');
+                musicControl.classList.add('paused');
+            }
+        });
+        
+        // 音量调整功能
+        audio.addEventListener('loadedmetadata', function() {
+            if (audio.volume !== 0.25) {
+                audio.volume = 0.25;
+            }
+        });
+        
+        // 用户交互后播放策略
+        let hasInteracted = false;
+        const playMusicOnInteraction = () => {
+            if (!hasInteracted) {
+                audio.play().then(() => {
+                    musicControl.classList.remove('paused');
+                    musicControl.classList.add('playing');
+                    hasInteracted = true;
+                }).catch(error => {
+                    console.log('用户交互后播放失败:', error);
+                });
+            }
+        };
+        
+        document.addEventListener('click', playMusicOnInteraction, { once: true });
+        document.addEventListener('touchstart', playMusicOnInteraction, { once: true });
+        
+        // 图片点击放大效果
+        document.querySelectorAll('.img-container').forEach(container => {
+            container.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                // 创建全屏图片容器
+                const fullscreenContainer = document.createElement('div');
+                fullscreenContainer.style.position = 'fixed';
+                fullscreenContainer.style.top = '0';
+                fullscreenContainer.style.left = '0';
+                fullscreenContainer.style.width = '100%';
+                fullscreenContainer.style.height = '100%';
+                fullscreenContainer.style.backgroundColor = 'rgba(0,0,0,0.9)';
+                fullscreenContainer.style.display = 'flex';
+                fullscreenContainer.style.alignItems = 'center';
+                fullscreenContainer.style.justifyContent = 'center';
+                fullscreenContainer.style.zIndex = '1000';
+                fullscreenContainer.style.cursor = 'pointer';
+                
+                // 创建放大的图片
+                const fullscreenImg = document.createElement('img');
+                fullscreenImg.src = img.src;
+                fullscreenImg.style.maxWidth = '90%';
+                fullscreenImg.style.maxHeight = '90%';
+                fullscreenImg.style.objectFit = 'contain';
+                fullscreenImg.style.transition = 'transform 0.3s';
+                
+                // 添加到页面
+                fullscreenContainer.appendChild(fullscreenImg);
+                document.body.appendChild(fullscreenContainer);
+                
+                // 点击关闭全屏
+                fullscreenContainer.addEventListener('click', function() {
+                    document.body.removeChild(fullscreenContainer);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
